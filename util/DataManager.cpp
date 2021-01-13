@@ -65,7 +65,10 @@ void DataManager::manager(void){
     torch::Tensor output2 = module.forward({img_tensors}).toTensor();
 
     cout << "------ output ------" << endl;
-    cout << output << endl;
+    cout << "output's type" << endl;
+    cout << typeid(output).name() << endl;//结果为N2at6TensorE
+//    cout << "print query_feature" << endl;
+//    cout << output << endl;
 
 
     //下面进行度量学习
@@ -74,14 +77,69 @@ void DataManager::manager(void){
     torch::Tensor query_feature = output;
     torch::Tensor gallery_feature = output2;
     //feature normlization　特征标准化
-    //torch::data::transforms::Normalize(query_feature,2,dim = -1,keepdim = true);
-    //对dim=0方向进行cat竖向拼接
-//    query_feature = torch::cat(query_feature,0);
-//    cout << "------cated query_feature------" << endl;
-//    cout << query_feature << endl;
+    //torch::data::transforms::Normalize(query_feature,2,dim = -1);
+    //norm(query_feature,"f");
+    cout << "print norm of query_feature" << endl;
+    //先用这个默认范数吧
+    cout << norm(query_feature) << endl;
+    torch::Tensor normalized_query_feature = query_feature / norm(query_feature);
+    cout << "print normalized_query_feature" << endl;
+    //cout << normalized_query_feature << endl;
+    cout << "print normalized_query_feature's 行数" << endl;
+    int m = normalized_query_feature.size(0);
+    cout << normalized_query_feature.size(0) << endl;
+    cout << "print normalized_query_feature's 列数" << endl;
+//    int n = normalized_gallery_feature.size(1);
+//    cout << normalized_gallery_feature.size(1) << endl;
+
+    torch::pow(normalized_query_feature,2);
+    cout << "print torch::pow()" << endl;
+    //平方后，按行求和
+    normalized_query_feature = torch::pow(normalized_query_feature,2);
+
+    //cout << normalized_query_feature << endl;
+    cout << "sumed feature" << endl;
+    //cout << torch::sum(normalized_query_feature,1) << endl;
+    torch::Tensor sum_feature = torch::sum(normalized_query_feature,1);
+    cout << sum_feature << endl;
+    //sum_feature::expand((m,m));//注意：此处应为query_feature和行数和gallery_feature的行数
 
 
 
+    //expand
+    cout << "print expanded sum_feature" << endl;
+    cout << sum_feature.expand({8,8}) << endl;
+    cout << "转置" << endl;
+    cout << sum_feature.expand({8,8}).transpose(1,0) << endl;
+    //求距离
+    torch::Tensor distmat = sum_feature.expand({8,8}) + sum_feature.expand({8,8}).transpose(1,0);
+    cout << "距离" << endl;
+    cout << distmat << endl;
 
+    //计算相似度
+    int mm = distmat.size(0);
+    int nn = distmat.size(1);
+    cout << "mm nn" << endl;
+    cout << mm << nn <<endl;
 
+    //cv::Mat float_distmat = cv::Mat(distmat.data<float>());//float* 是个指针变量
+    cv::Mat float_distmat(distmat.size(0), distmat.size(1), CV_32FC1, distmat.data<float>());
+    cout << "转换后的distmat" << endl;
+    cout << float_distmat << endl;
+
+    int min[8] = {1, 1, 1, 1, 1, 1, 1, 1};
+    cout << min << endl;
+    int num = 0;
+    for (int i=0;i<mm;++i){
+        float *data =  float_distmat.ptr<float>(i);
+        for (int j=0;j<nn;++j){
+            if(data[j] < min[i]){
+                min[i] = data[j];
+            }
+        }
+        if(min[i]<0.2)
+            num += 1;
+    }
+    cout << "目标数量为:" << endl;
+    cout << num << endl;
 }
