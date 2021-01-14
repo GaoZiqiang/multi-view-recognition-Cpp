@@ -4,7 +4,7 @@ project(MultiViewRecogCpp)
 find_package(Torch REQUIRED)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${TORCH_CXX_FLAGS}")
 
-add_executable(MultiViewRecogCpp main.cpp DataManager.h)
+add_executable(MultiViewRecogCpp main.cpp util/DataManager.cpp model/ModelManager.cpp model/ModelManager.h util/MetricLearning.cpp util/MetricLearning.h)
 
 find_package( OpenCV REQUIRED )#找到opencv源
 target_link_libraries( MultiViewRecogCpp ${OpenCV_LIBS} )#添加opencv链接选项
