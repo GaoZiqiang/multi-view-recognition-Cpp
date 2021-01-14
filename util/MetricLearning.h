@@ -1,0 +1,14 @@
+//
+// Created by gaoziqiang on 2021/1/14.
+//
+
+#ifndef MULTIVIEWRECOGCPP_METRICLEARNING_H
+#define MULTIVIEWRECOGCPP_METRICLEARNING_H
+
+
+class MetricLearning {
+
+};
+
+
+#endif //MULTIVIEWRECOGCPP_METRICLEARNING_H

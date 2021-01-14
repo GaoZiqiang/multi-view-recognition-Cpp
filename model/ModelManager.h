@@ -1,0 +1,14 @@
+//
+// Created by gaoziqiang on 2021/1/14.
+//
+
+#ifndef MULTIVIEWRECOGCPP_MODELMANAGER_H
+#define MULTIVIEWRECOGCPP_MODELMANAGER_H
+
+
+class ModelManager {
+
+};
+
+
+#endif //MULTIVIEWRECOGCPP_MODELMANAGER_H
