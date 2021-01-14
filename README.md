@@ -38,8 +38,10 @@ opencv
 
 libtorch 1.7.1+cpu
 ## models and datasets
-downloaded and put into diretory "./model/",download from 链接: https://pan.baidu.com/s/1Fst0TwDY-xsn_GxdfyUTCQ  密码: 6dag;
-downloaded and put into directory "./data/",download from 链接: https://pan.baidu.com/s/1H0ZnIHHA2klRRlGxGUA6gg  密码: 3kek;
+downloaded and put into diretory "./model/",download from 
+链接: https://pan.baidu.com/s/1Fst0TwDY-xsn_GxdfyUTCQ  密码: 6dag;
+downloaded and put into directory "./data/",download from 
+链接: https://pan.baidu.com/s/1H0ZnIHHA2klRRlGxGUA6gg  密码: 3kek;
 # Run
 git clone https://github.com/GaoZiqiang/multi-view-recognition-Cpp.git
 cd $PROJECT_HOME
