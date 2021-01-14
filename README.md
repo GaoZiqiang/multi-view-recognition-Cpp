@@ -1,7 +1,7 @@
-# Introduction
+## Introduction
 the C++ implement of multi-view recognition.
-# Requiremens
-## the ditectory structure
+## Requirements
+### the ditectory structure
 ├── CMakeLists.txt
 
 ├── data
@@ -30,13 +30,13 @@ the C++ implement of multi-view recognition.
 
     └── MetricLearning.h
 
-## requirements
+### requirements
 gcc version 7.5.0 (Ubuntu 7.5.0-3ubuntu1~18.04)
 
 opencv
 
 libtorch 1.7.1+cpu
-## models and datasets
+### models and datasets
 downloaded and put into diretory "./model/",download from 
 
 链接: https://pan.baidu.com/s/1Fst0TwDY-xsn_GxdfyUTCQ  密码: 6dag;
@@ -44,7 +44,7 @@ downloaded and put into diretory "./model/",download from
 downloaded and put into directory "./data/",download from 
 
 链接: https://pan.baidu.com/s/1H0ZnIHHA2klRRlGxGUA6gg  密码: 3kek;
-# Run
+## Run
 git clone https://github.com/GaoZiqiang/multi-view-recognition-Cpp.git
 
 cd $PROJECT_HOME
