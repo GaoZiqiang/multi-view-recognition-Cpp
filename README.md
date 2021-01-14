@@ -33,7 +33,9 @@ the C++ implement of multi-view recognition.
     └── MetricLearning.h
 ## requirements
 gcc version 7.5.0 (Ubuntu 7.5.0-3ubuntu1~18.04)
+
 opencv
+
 libtorch 1.7.1+cpu
 ## models and datasets
 downloaded and put into diretory "./model/",download from 链接: https://pan.baidu.com/s/1Fst0TwDY-xsn_GxdfyUTCQ  密码: 6dag;
